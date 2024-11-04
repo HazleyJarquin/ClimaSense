@@ -1,1 +1,1 @@
-export * from "./CapitalizeText";
+export * from "./capitalizeText";
