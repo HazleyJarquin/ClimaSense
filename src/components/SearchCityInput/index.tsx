@@ -1,7 +1,6 @@
 import { Box, IconButton, TextField } from "@mui/material";
 import { useCityStore } from "../../store";
 import { useState } from "react";
-
 import { ModeToggle } from "../ModeToggle";
 import { SearchIcon } from "lucide-react";
 
@@ -58,7 +57,7 @@ export const SearchCityInput = ({
         sx={{ width }}
         variant="outlined"
       />
-      <IconButton onClick={handleClick}>
+      <IconButton onClick={handleClick} data-testid="search-button">
         <SearchIcon size={20} />
       </IconButton>
       <ModeToggle />
