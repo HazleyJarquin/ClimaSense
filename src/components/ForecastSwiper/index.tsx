@@ -13,6 +13,7 @@ import { IForecastResponse } from "../../interfaces";
 import { useCityStore, useDarkMode } from "../../store";
 import { Box, Skeleton, Typography } from "@mui/material";
 import { memo } from "react";
+import { weatherIcons } from "../../shared";
 
 export const ForecastSwiper = memo(() => {
   const { isDarkTheme } = useDarkMode();
@@ -84,9 +85,9 @@ export const ForecastSwiper = memo(() => {
                 }}
               >
                 <img
-                  src={`http://openweathermap.org/img/w/${w?.icon}.png`}
+                  src={weatherIcons[w?.main as keyof typeof weatherIcons]}
+                  style={{ width: "80px", height: "80px" }}
                   alt="weather icon"
-                  style={{ width: "60px", height: "60px" }}
                 />
                 <Typography variant="body2" sx={{ fontSize: "14px" }}>
                   {w.description}

@@ -7,8 +7,8 @@ import { CityTemperature } from "./components/CityTemperature";
 import { CityDateAndDescription } from "./components/CityDateAndDescription";
 
 export const WeatherCard = memo(() => {
-  const { isDarkTheme } = useDarkMode();
   const { city } = useCityStore();
+  const isDarkTheme = useDarkMode((state) => state.isDarkTheme);
   const { data: weatherData, isLoading } =
     useGetWeather<IWeatherResponse>(city);
 
@@ -17,7 +17,7 @@ export const WeatherCard = memo(() => {
       sx={{
         width: { xs: "100%", sm: "40%" },
         borderRadius: 4,
-        backgroundColor: isDarkTheme ? "#FFFFFF" : "#3B1C32",
+        backgroundColor: !isDarkTheme ? "#3B1C32" : "#FFFFFF",
         padding: "1rem",
         color: "black",
         display: "flex",
