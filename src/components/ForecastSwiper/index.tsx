@@ -1,6 +1,7 @@
 import "./styles.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import "swiper/swiper-bundle.css";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import "swiper/css";
@@ -22,7 +23,14 @@ export const ForecastSwiper = memo(() => {
     useGetForecast<IForecastResponse>(city);
 
   if (isLoading) {
-    return <Skeleton variant="rounded" width={"100%"} height={200} />;
+    return (
+      <Skeleton
+        variant="rounded"
+        width={"100%"}
+        height={200}
+        data-testid="loading-skeleton"
+      />
+    );
   }
 
   return (
@@ -44,7 +52,7 @@ export const ForecastSwiper = memo(() => {
       }}
     >
       {forecastData?.list?.map((f, index) => (
-        <SwiperSlide key={index}>
+        <SwiperSlide key={index} data-testid="forecast-slide">
           <Box
             sx={{
               backgroundColor: isDarkTheme ? "#FFFFFF" : "#3B1C32",

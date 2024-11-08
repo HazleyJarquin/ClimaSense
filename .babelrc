@@ -8,5 +8,9 @@
         "runtime": "automatic"
       }
     ]
+  ],
+  "plugins": [
+    // Asegúrate de que este plugin esté presente
+    "@babel/plugin-transform-runtime"
   ]
 }

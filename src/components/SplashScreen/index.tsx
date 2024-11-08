@@ -1,10 +1,12 @@
-import styles from "./styles.module.css";
 import { Box } from "@mui/material";
+import RainDay from "../../../public/icons/rain.svg";
+import ClearDay from "../../../public/icons/clear-day.svg";
+import SnowDay from "../../../public/icons/snow.svg";
 
-import { motion } from "framer-motion";
-import { SunIcon } from "lucide-react";
-
+const icons = [RainDay, ClearDay, SnowDay];
 export const SplashScreen = () => {
+  const randomNumber = Math.floor(Math.random() * icons.length);
+  const IconImage = icons[randomNumber];
   return (
     <Box
       sx={{
@@ -16,23 +18,11 @@ export const SplashScreen = () => {
         alignItems: "center",
       }}
     >
-      <motion.div
-        className="box"
-        animate={{
-          scale: [1, 2, 2, 1, 1],
-          rotate: [0, 0, 180, 180, 0],
-          borderRadius: ["0%", "0%", "50%", "50%", "0%"],
-        }}
-        transition={{
-          duration: 2,
-          ease: "easeInOut",
-          times: [0, 0.2, 0.5, 0.8, 1],
-          repeat: Infinity,
-          repeatDelay: 1,
-        }}
-      >
-        <SunIcon size={200} className={styles.sunIconStyle} />
-      </motion.div>
+      <img
+        src={IconImage}
+        alt="Weather Icon"
+        style={{ width: "200px", height: "200px" }}
+      />
     </Box>
   );
 };
